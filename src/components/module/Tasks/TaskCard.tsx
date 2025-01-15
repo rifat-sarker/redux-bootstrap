@@ -14,9 +14,9 @@ const TaskCard = ({ task }: IProps) => {
         <div className="flex gap-2 items-center">
           <div
             className={cn("size-3 rounded-lg", {
-              "bg-green-500": task.priority === "Low",
-              "bg-orange-500": task.priority === "Medium",
-              "bg-red-500": task.priority === "High",
+              "bg-green-500": task.priority === "low",
+              "bg-orange-500": task.priority === "medium",
+              "bg-red-500": task.priority === "high",
             })}
           ></div>
           <h1>{task.title}</h1>
