@@ -87,6 +87,31 @@ export function AddTaskModal() {
             />
             <FormField
               control={form.control}
+              name="priority"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Priority</FormLabel>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select a priority to set" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      <SelectItem value="high">High</SelectItem>
+                      <SelectItem value="medium">Medium</SelectItem>
+                      <SelectItem value="low">Low</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
               name="dueDate"
               render={({ field }) => (
                 <FormItem className="flex flex-col">
@@ -116,7 +141,9 @@ export function AddTaskModal() {
                         selected={
                           field.value ? new Date(field.value) : undefined
                         }
-                        onSelect={(date) => field.onChange(date ? date.toISOString() : "")}
+                        onSelect={(date) =>
+                          field.onChange(date ? date.toISOString() : "")
+                        }
                         // disabled={(date) =>
                         //   date > new Date() || date < new Date("1900-01-01")
                         // }
@@ -124,30 +151,6 @@ export function AddTaskModal() {
                       />
                     </PopoverContent>
                   </Popover>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="priority"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Priority</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select a priority to set" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="high">High</SelectItem>
-                      <SelectItem value="medium">Medium</SelectItem>
-                      <SelectItem value="low">Low</SelectItem>
-                    </SelectContent>
-                  </Select>
                 </FormItem>
               )}
             />
