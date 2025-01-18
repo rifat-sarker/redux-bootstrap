@@ -8,7 +8,16 @@ interface InitialState {
 }
 
 const initialState: InitialState = {
-  users: [],
+  users: [
+    {
+      id: "T_Ki2sTjwgSWm7taWBtMK",
+      name: "Jony",
+    },
+    {
+      id: "34",
+      name: "Complete project documentation",
+    },
+  ],
 };
 
 type DraftUser = Pick<IUser, "name">;
@@ -19,7 +28,7 @@ const createUser = (userData: DraftUser): IUser => {
 
 const userSlice = createSlice({
   name: "user",
-  initialState,
+  initialState: initialState,
   reducers: {
     addUser(state, action: PayloadAction<DraftUser>) {
       const userData = createUser(action.payload);
@@ -32,6 +41,6 @@ const userSlice = createSlice({
 });
 
 export const selectUsers = (state: RootState) => state.user.users;
-export const { addUser, removeUser: deleteUser } = userSlice.actions;
+export const { addUser, removeUser } = userSlice.actions;
 
 export default userSlice.reducer;

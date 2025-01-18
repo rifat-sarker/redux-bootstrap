@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { deleteUser } from "@/redux/features/user/userSlice";
+import { removeUser } from "@/redux/features/user/userSlice";
 import { IUser } from "@/types";
 import { Trash2 } from "lucide-react";
 import { useDispatch } from "react-redux";
@@ -17,7 +17,7 @@ const UserCard = ({ user }: IProps) => {
           <h1>{user.name}</h1>
         </div>
         <div className="flex gap-3 items-center">
-          <Button onClick={() => dispatch(deleteUser(user.id))}>
+          <Button onClick={() => dispatch(removeUser(user.id))}>
             <Trash2 />
           </Button>
         </div>
