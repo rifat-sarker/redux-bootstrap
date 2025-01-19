@@ -7,7 +7,12 @@ import { useGetTasksQuery } from "@/redux/api/baseApi";
 import { ITask } from "@/types";
 
 export default function Tasks() {
-  const { data, isLoading, isError } = useGetTasksQuery(undefined);
+  const { data, isLoading, isError } = useGetTasksQuery(undefined, {
+    refetchOnFocus: true,
+    refetchOnMountOrArgChange: true,
+
+    refetchOnReconnect: true,
+  });
   console.log(data, isLoading, isError);
 
   if (isLoading) return <div>Loading...</div>;
