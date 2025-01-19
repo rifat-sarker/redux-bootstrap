@@ -10,8 +10,7 @@ export default function Navbar() {
           <span className="text-2xl">Mate</span>
         </h1>
       </div>
-      <Link to={"users"}>Go to users</Link>
-      <Link to={""}>Go to Task lists</Link>
+      <Link to={""}>Tasks</Link>
       <div className="ml-auto">
         <ModeToggle />
       </div>

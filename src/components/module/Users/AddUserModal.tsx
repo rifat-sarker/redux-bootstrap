@@ -18,19 +18,19 @@ import {
 
 import { Textarea } from "@/components/ui/textarea";
 
-import { addUser } from "@/redux/features/user/userSlice";
-import { useAppDispatch } from "@/redux/hook";
-import { IUser } from "@/types";
+
+
+
 
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
 export function AddUserModal() {
   const form = useForm();
-  const dispatch = useAppDispatch();
+  
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     console.log(data);
-    dispatch(addUser(data as IUser));
+   
   };
 
   return (

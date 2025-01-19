@@ -1,13 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./features/counter/counterSlice";
-import TaskReducer from "./features/task/taskSlice";
-import UserReducer from "./features/user/userSlice";
 export const store = configureStore({
-  reducer: {
-    counter: counterReducer,
-    todo: TaskReducer,
-    user: UserReducer,
-  },
+  reducer: {},
 });
 
 //handle ts type error for organizing the code

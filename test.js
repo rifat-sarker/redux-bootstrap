@@ -42,3 +42,6 @@ const withDiscount = buyClothes(0.3);
 console.log(withDiscount(100));
 console.log(withDiscount(200));
 console.log(withDiscount(300));
+
+
+
