@@ -30,7 +30,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
-
+import { useCreateTaskMutation } from "@/redux/api/baseApi";
 
 import { format } from "date-fns";
 
@@ -42,9 +42,16 @@ export function AddTaskModal() {
   const [open, setOpen] = useState(false);
   const form = useForm();
 
+  const [createTask, { data }] = useCreateTaskMutation();
+  console.log("data", data);
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    const taskData = {
+      ...data,
+      isCompleted: false,
+    };
+    const res = await createTask(taskData).unwrap();
+    console.log("inside submit function", res);
     setOpen(false);
     form.reset();
   };
@@ -106,28 +113,6 @@ export function AddTaskModal() {
                       <SelectItem value="high">High</SelectItem>
                       <SelectItem value="medium">Medium</SelectItem>
                       <SelectItem value="low">Low</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="assignTo"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Assign To</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select a priority to set" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                    
                     </SelectContent>
                   </Select>
                 </FormItem>

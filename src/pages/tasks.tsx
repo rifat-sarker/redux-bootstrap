@@ -1,7 +1,9 @@
 import { AddTaskModal } from "@/components/module/Tasks/AddTaskModal";
 import TaskCard from "@/components/module/Tasks/TaskCard";
+
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useGetTasksQuery } from "@/redux/api/baseApi";
+
 import { ITask } from "@/types";
 
 export default function Tasks() {
