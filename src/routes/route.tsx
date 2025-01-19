@@ -1,6 +1,6 @@
 import App from "@/App";
 import Login from "@/pages/login";
-import Task from "@/pages/task";
+import Task from "@/pages/tasks";
 import Users from "@/pages/users";
 import { createBrowserRouter } from "react-router-dom";
 

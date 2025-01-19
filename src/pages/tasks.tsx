@@ -1,9 +1,14 @@
 import { AddTaskModal } from "@/components/module/Tasks/AddTaskModal";
+import TaskCard from "@/components/module/Tasks/TaskCard";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useGetTasksQuery } from "@/redux/api/baseApi";
+import { ITask } from "@/types";
 
+export default function Tasks() {
+  const { data, isLoading, isError } = useGetTasksQuery(undefined);
+  console.log(data, isLoading, isError);
 
-export default function Task() {
-
+  if (isLoading) return <div>Loading...</div>;
 
   return (
     <div className="max-w-7xl mx-auto px-5 mt-20">
@@ -20,7 +25,12 @@ export default function Task() {
 
         <AddTaskModal />
       </div>
-      <div className="space-y-5 mt-20"></div>
+      <div className="space-y-5 mt-20">
+        {!isLoading &&
+          data.tasks.map((task: ITask) => (
+            <TaskCard task={task} key={task.id} />
+          ))}
+      </div>
     </div>
   );
 }
